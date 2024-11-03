@@ -42,3 +42,13 @@ ORDER BY 2 DESC;
 -- It seems that Italian food is highly favored in this order.
 
 -- 5. View the details of the top 5 highest spend orders. What insights can you gather from the results?
+
+SELECT mi.category, COUNT(od.item_id) AS num_items
+FROM order_details AS od
+LEFT JOIN menu_items AS mi
+ON od.item_id = mi.menu_item_id
+WHERE od.order_id IN (440, 2075, 1957, 330, 2675)
+GROUP BY 1, 2;
+
+-- Findings:
+-- Italian food does play a major role.
